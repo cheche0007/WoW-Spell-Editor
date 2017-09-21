@@ -25,6 +25,10 @@ using SpellEditor.Sources.MySQL;
 using SpellEditor.Sources.SQLite;
 using SpellEditor.Sources.Tools.SpellFamilyClassMaskStoreParser;
 using System.Collections;
+using WoWEditor6.IO;
+using WoWEditor6.Scene;
+using WoWEditor6.UI;
+using WoWEditor6.Graphics;
 
 // Public use of a DBC Header file
 public struct DBC_Header
@@ -149,6 +153,8 @@ namespace SpellEditor
         private void _Loaded(object sender, RoutedEventArgs e)
         {
             Application.Current.DispatcherUnhandledException += new DispatcherUnhandledExceptionEventHandler(App_DispatcherUnhandledException);
+
+            return; // TEMP, harry
 
             try
             {
@@ -2877,6 +2883,37 @@ namespace SpellEditor
 				return dr[0]["SpellName" + GetLocale()].ToString();
 			return "";
 		}
+        #endregion
+
+        #region SpellVisualRender
+        private bool initialisedRenderer = false;
+
+        private void SpellVisualRenderClick(object sender, RoutedEventArgs e)
+        {
+            if (!initialisedRenderer)
+            {
+                initialisedRenderer = true;
+                var path = "D:\\WoW 3.3.5a";
+
+                var window = new EditorWindow();
+                var context = new GxContext(window.DrawTarget);
+                context.InitContext();
+                context.InitShaders();
+
+                //WorldFrame.Instance.Initialize(window.DrawTarget, context);
+                //WorldFrame.Instance.OnResize((int)window.RenderSize.Width, (int)window.RenderSize.Height);
+
+                FileManager.Instance.DataPath = path;
+                FileManager.Instance.InitFromPath();
+                return;
+            }
+            var text = DisplayIdBox.Text;
+            int displayId;
+            if (int.TryParse(text, out displayId) == false)
+                return;
+
+            ModelControl.SetCreatureDisplayEntry(displayId);
+        }
+        #endregion
     };
-    #endregion
 };
