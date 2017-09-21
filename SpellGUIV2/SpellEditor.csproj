@@ -118,6 +118,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -202,6 +203,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Neo\WoWEditor6\WoWEditor6.csproj">
+      <Project>{b1bf37bf-c6e1-4d7c-a0ba-aae59eebb913}</Project>
+      <Name>WoWEditor6</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.104.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.104.0\build\net451\System.Data.SQLite.Core.targets')" />

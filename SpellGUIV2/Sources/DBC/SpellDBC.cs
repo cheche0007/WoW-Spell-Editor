@@ -259,6 +259,8 @@ namespace SpellEditor.Sources.DBC
                     StringBuilder q = null;
                     foreach (Spell_DBC_RecordMap r in body.records)
                     {
+                        if (r.record.ID == 0)
+                            continue;
                         if (index == 0 || index % 250 == 0)
                         {
                             if (q != null)
