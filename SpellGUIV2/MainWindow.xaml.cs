@@ -2992,5 +2992,15 @@ namespace SpellEditor
             }
             MultilingualSwitch.SelectedIndex = index;
         }
+
+        private void SpellFamilyEditorClick(object sender, RoutedEventArgs e)
+        {
+            if (selectedID == 0)
+            {
+                return;
+            }
+            var window = new SpellFamilyWindow(GetDBAdapter(), (SpellIconDBC) FindDbcForBinding("SpellIcon"), selectedID, GetLocale());
+            window.Show();
+        }
     };
 };

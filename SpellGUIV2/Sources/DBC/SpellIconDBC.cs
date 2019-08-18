@@ -13,7 +13,7 @@ using System.Windows.Controls;
 
 namespace SpellEditor.Sources.DBC
 {
-    class SpellIconDBC : AbstractDBC
+    public class SpellIconDBC : AbstractDBC
     {
         private MainWindow main;
         private IDatabaseAdapter adapter;
